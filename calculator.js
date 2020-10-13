@@ -10,8 +10,7 @@ var operator = null;
 $("button").click(function(){
     //displaying numbers
     if ($(this).val()) {
-        if (result){
-            string1 = '';
+        if ((result )|| (operator)){
             string1 = string1.concat($(this).val());
             $("#display").val(string1);
             result = null;
@@ -24,7 +23,7 @@ $("button").click(function(){
     else {
         if ($(this).attr('id') == 'addButton'){
             if (operator) {
-                const second = Number($("#display").val());
+                const second = Number(string1);
                 number1 = calculate(number1, second, operator);
                 $("#display").val(number1);
             }
@@ -37,7 +36,7 @@ $("button").click(function(){
         }
         if ($(this).attr('id') == 'subtractButton'){
             if (operator) {
-                const second = Number($("#display").val());
+                const second = Number(string1);
                 number1 = calculate(number1, second, operator);
                 $("#display").val(number1);
             }
@@ -50,7 +49,7 @@ $("button").click(function(){
         }
         if ($(this).attr('id') == 'multiplyButton'){
             if (operator) {
-                const second = Number($("#display").val());
+                const second = Number(string1);
                 number1 = calculate(number1, second, operator);
                 $("#display").val(number1);
             }
@@ -63,7 +62,7 @@ $("button").click(function(){
         }
         if ($(this).attr('id') == 'divideButton'){
             if (operator) {
-                const second = Number($("#display").val());
+                const second = Number(string1);
                 number1 = calculate(number1, second, operator);
                 $("#display").val(number1);
             }
@@ -83,12 +82,22 @@ $("button").click(function(){
             result = null;
         }
         if ($(this).attr('id') == 'equalsButton'){
-            const second = Number(string1);
-            result = calculate (number1, second, operator);
-            $('#display').val(result);
-            $("#output").html("equals " + result);
-            string1 = '';
-            operator = null;
+            if ((number1) && (operator) && (string1)) {
+                const second = Number(string1);
+                result = calculate (number1, second, operator);
+                $('#display').val(result);
+                $("#output").html("equals " + result);
+                string1 = '';
+                operator = null;
+            }
+            else {
+                if (operator){
+                    $('#display').val(number1);    
+                }
+                else {
+                    $('#display').val(string1);
+                }                                
+            }            
         }
     }
 });
