@@ -93,15 +93,15 @@ $("button").click(function(){
                 string1 = '';
                 operator = null;
                 $("#display").val(result);
-                console.log(number1 + preoperator + presecond +"equals"+result);
+                // console.log(number1 + preoperator + presecond +"equals"+result);
             } 
             else {
                 if (operator){
-                    console.log(number1);
-                    console.log(string1);
+                    // console.log(number1);
+                    // console.log(string1);
                     $('#display').val(number1);
-                    console.log(number1);
-                    console.log(string1);
+                    // console.log(number1);
+                    // console.log(string1);
                     result = null;    
                 }
                 else {
@@ -109,7 +109,8 @@ $("button").click(function(){
                     number1 = Number($("#display").val());
                     result = calculate (number1, presecond, preoperator);
                     $('#display').val(result);
-                    $("#output").html("equals " + result);console.log(number1 + preoperator + presecond +"equals"+result);
+                    $("#output").html("equals " + result);
+                    // console.log(number1 + preoperator + presecond +"equals"+result);
                     }
                     else {
                         $('#display').val(string1);
@@ -119,6 +120,7 @@ $("button").click(function(){
             }            
         }
     }
+    /*
     console.log($(this).attr('id'));
     console.log("string1=" + string1);
     console.log("number1=" + number1);
@@ -126,6 +128,7 @@ $("button").click(function(){
     console.log("operator=" + operator);
     console.log("presecond=" + presecond);
     console.log("preoperator=" + preoperator);
+    */
 });
 
 function calculate(number1, number2, operator){
