@@ -6,6 +6,8 @@ var string1 = '';
 var number1 = 0;
 var result = null;
 var operator = null;
+var preoperator = null;
+var presecond = null;
 
 $("button").click(function(){
     //displaying numbers
@@ -85,21 +87,45 @@ $("button").click(function(){
             if ((number1) && (operator) && (string1)) {
                 const second = Number(string1);
                 result = calculate (number1, second, operator);
-                $('#display').val(result);
                 $("#output").html("equals " + result);
+                preoperator = operator;
+                presecond = second;
                 string1 = '';
                 operator = null;
-            }
+                $("#display").val(result);
+                console.log(number1 + preoperator + presecond +"equals"+result);
+            } 
             else {
                 if (operator){
-                    $('#display').val(number1);    
+                    console.log(number1);
+                    console.log(string1);
+                    $('#display').val(number1);
+                    console.log(number1);
+                    console.log(string1);
+                    result = null;    
                 }
                 else {
-                    $('#display').val(string1);
+                    if (result) {
+                    number1 = Number($("#display").val());
+                    result = calculate (number1, presecond, preoperator);
+                    $('#display').val(result);
+                    $("#output").html("equals " + result);console.log(number1 + preoperator + presecond +"equals"+result);
+                    }
+                    else {
+                        $('#display').val(string1);
+                        result = null;
+                    }
                 }                                
             }            
         }
     }
+    console.log($(this).attr('id'));
+    console.log("string1=" + string1);
+    console.log("number1=" + number1);
+    console.log("result=" + result);
+    console.log("operator=" + operator);
+    console.log("presecond=" + presecond);
+    console.log("preoperator=" + preoperator);
 });
 
 function calculate(number1, number2, operator){
