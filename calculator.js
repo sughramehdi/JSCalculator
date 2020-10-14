@@ -2,11 +2,13 @@
  * Implement all your JavaScript in this file!
  */
 
+// initiating variables
 var string1 = '';
 var number1 = 0;
 var result = null;
 var operator = null;
-var preoperator = null;
+// to be used when user continues to press equals
+var preoperator = null; 
 var presecond = null;
 
 $("button").click(function(){
